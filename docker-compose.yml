@@ -19,7 +19,7 @@ services:
       - ../realms/base:/opt/keycloak/data/import
 
     ports:
-      - "${keycloak_port:6666}:8080"
+      - "${KEYCLOAK_PORT:-6666}:8080"
 
   db:
     image: postgres:15
