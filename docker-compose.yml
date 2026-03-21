@@ -15,8 +15,14 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
 
+      KC_THEME_WELCOME_CACHE: "false"
+      KC_THEME_CACHE_THEMES: "false"
+      KC_THEME_CACHE_TEMPLATES: "false"
+
+
     volumes:
       - ../realms/base:/opt/keycloak/data/import
+      - ./themes:/opt/keycloak/themes
 
     ports:
       - "${KEYCLOAK_PORT:-6666}:8080"
