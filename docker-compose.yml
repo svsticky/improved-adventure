@@ -25,7 +25,7 @@ services:
       - ./themes:/opt/keycloak/themes
 
     ports:
-      - "${KEYCLOAK_PORT:-8000}:8080"
+      - "${KEYCLOAK_PORT:-6666}:8080"
 
   db:
     image: postgres:15
