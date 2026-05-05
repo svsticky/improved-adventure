@@ -18,7 +18,8 @@ services:
       KC_THEME_WELCOME_CACHE: "false"
       KC_THEME_CACHE_THEMES: "false"
       KC_THEME_CACHE_TEMPLATES: "false"
-      KC_SPI_THEME_DEFAULT: main-theme
+      KC_SPI_THEME_LOGIN_NAME: main-theme
+      KC_SPI_THEME_EMAIL_NAME: main-theme
 
 
     volumes:
