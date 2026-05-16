@@ -1,9 +1,8 @@
-# Fase 1: De Build-fase
 FROM quay.io/keycloak/keycloak:24.0 AS builder
 
 ENV KC_DB=postgres
 
-RUN /opt/keycloak/bin/kc.sh build --features="preview"
+RUN /opt/keycloak/bin/kc.sh build --features="update-email"
 
 FROM quay.io/keycloak/keycloak:24.0
 
