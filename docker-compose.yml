@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:24.0
+    build: .
     command:
       - start-dev
       - --import-realm
@@ -27,6 +27,7 @@ services:
     volumes:
       - ../realms/base:/opt/keycloak/data/import
       - ./themes:/opt/keycloak/themes
+      - ./keycloak-bcrypt-1.6.0.jar:/opt/keycloak/providers/keycloak-bcrypt.jar
 
     ports:
       - "${KEYCLOAK_PORT:-8080}:8080"
