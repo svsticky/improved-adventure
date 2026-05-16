@@ -35,7 +35,7 @@
                                 <#if link??>
                                 <tr>
                                     <td align="center" style="padding: 10px 0 20px;">
-                                        <a href="${link}" style="color: #FFF; text-decoration: none; font-weight: bold; display: inline-block; border-radius: 5px; background-color: #fa6b20; border: 10px 25px solid #fa6b20; border-width: 10px 25px;">
+                                        <a href="${link}" style="color: #FFF; text-decoration: none; font-weight: bold; display: inline-block; border-radius: 5px; background-color: #fa6b20; border-style: solid; border-color: #fa6b20; border-width: 10px 25px;">
                                             ${msg("linkText")}
                                         </a>
                                     </td>
