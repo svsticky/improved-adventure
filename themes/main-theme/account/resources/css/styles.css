@@ -1,0 +1,70 @@
+/* sv Sticky branding, in line with the login theme's orange accent and dark mode.
+   Targets the PatternFly 5 tokens used by Keycloak's real "keycloak.v3" account
+   console (Keycloak 26.x) - verified against the actual compiled CSS bundle. */
+
+:root {
+    --pf-v5-global--primary-color--100: #fa6b20;
+    --pf-v5-global--primary-color--200: #d65a1b;
+    --pf-v5-global--primary-color--300: #fa6b20;
+    --pf-v5-global--primary-color--light-100: #fa6b20;
+    --pf-v5-global--primary-color--dark-100: #fa6b20;
+
+    --pf-v5-global--link--Color: #fa6b20;
+    --pf-v5-global--link--Color--hover: #d65a1b;
+    --pf-v5-global--link--Color--light: #fa6b20;
+    --pf-v5-global--link--Color--light--hover: #d65a1b;
+    --pf-v5-global--link--Color--dark: #fa6b20;
+    --pf-v5-global--link--Color--dark--hover: #d65a1b;
+
+    --pf-v5-global--active-color--100: #fa6b20;
+    --pf-v5-global--active-color--400: #fa6b20;
+
+    /* page background, light mode - matches login */
+    --pf-v5-global--BackgroundColor--light-300: #f3f4f6;
+}
+
+/* Dark mode: the account console already toggles the .pf-v5-theme-dark class
+   itself (parent theme.properties sets darkMode=true). We only nudge
+   PatternFly's own dark palette towards the login theme's dark tokens
+   (#111827 page / #1f2937 card) and keep the brand orange - everything else
+   (text, borders, disabled states, ...) stays PatternFly's own. */
+:where(.pf-v5-theme-dark) {
+    --pf-v5-global--primary-color--100: #fa6b20;
+    --pf-v5-global--primary-color--200: #d65a1b;
+    --pf-v5-global--primary-color--300: #fa6b20;
+    --pf-v5-global--primary-color--light-100: #fa6b20;
+    --pf-v5-global--primary-color--dark-100: #fa6b20;
+
+    --pf-v5-global--link--Color: #fa6b20;
+    --pf-v5-global--link--Color--hover: #d65a1b;
+    --pf-v5-global--link--Color--light: #fa6b20;
+    --pf-v5-global--link--Color--light--hover: #d65a1b;
+    --pf-v5-global--link--Color--dark: #fa6b20;
+    --pf-v5-global--link--Color--dark--hover: #d65a1b;
+
+    --pf-v5-global--active-color--100: #fa6b20;
+
+    --pf-v5-global--BackgroundColor--100: #1f2937;
+    --pf-v5-global--BackgroundColor--150: #1f2937;
+    --pf-v5-global--BackgroundColor--200: #111827;
+    --pf-v5-global--BackgroundColor--300: #1f2937;
+    --pf-v5-global--BackgroundColor--light-100: #1f2937;
+    --pf-v5-global--BackgroundColor--light-200: #1f2937;
+    --pf-v5-global--BackgroundColor--light-300: #111827;
+}
+
+.pf-v5-c-button.pf-m-primary {
+    font-weight: 600;
+}
+
+/* Hide the top masthead and side nav - single-page layout, closer to the login card. */
+.pf-v5-c-masthead,
+.pf-v5-c-page__sidebar {
+    display: none !important;
+}
+
+.pf-v5-c-page {
+    grid-template: "main" 1fr / 1fr !important;
+    grid-template-areas: "main" !important;
+    grid-template-columns: 1fr !important;
+}

@@ -21,6 +21,7 @@ services:
       KC_THEME_CACHE_TEMPLATES: "false"
       KC_SPI_THEME_LOGIN_NAME: main-theme
       KC_SPI_THEME_EMAIL_NAME: main-theme
+      KC_SPI_THEME_ACCOUNT_NAME: main-theme
 
     volumes:
       - ../realms/base:/opt/keycloak/data/import
