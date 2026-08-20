@@ -67,4 +67,16 @@
     grid-template: "main" 1fr / 1fr !important;
     grid-template-areas: "main" !important;
     grid-template-columns: 1fr !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+}
+
+/* PatternFly's stock page shell relies on a nested scroll container (the
+   masthead/sidebar own the rest of the viewport); with those hidden above,
+   .pf-v5-c-page__main needs to be the scroll container itself or content
+   taller than the viewport (e.g. the theme picker) is unreachable on mobile. */
+.pf-v5-c-page__main {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
 }
