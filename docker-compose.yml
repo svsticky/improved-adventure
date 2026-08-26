@@ -1,14 +1,17 @@
 services:
   keycloak:
     build: .
-    command: start-dev
+    command: start --optimized
+    network_mode: "host"
     environment:
-      KC_DB: keycloak
+      KC_HTTP_PORT: ${KEYCLOAK_PORT:-8080}
+      KC_DB: ${DB}
       KC_DB_URL: ${DB_URL}
       KC_DB_USERNAME: ${DB_USERNAME}
       KC_DB_PASSWORD: ${DB_PASSWORD}
       KC_PROXY_HEADERS: xforwarded
       KC_HTTP_ENABLED: true
+      KC_HOSTNAME: ${KC_HOSTNAME}
 
       KEYCLOAK_ADMIN: dev@svsticky.nl
       KEYCLOAK_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
