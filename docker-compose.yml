@@ -16,8 +16,6 @@ services:
       KEYCLOAK_ADMIN: dev@svsticky.nl
       KEYCLOAK_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
 
-      KC_FEATURES: update-email
-
       KC_THEME_WELCOME_CACHE: "false"
       KC_THEME_CACHE_THEMES: "false"
       KC_THEME_CACHE_TEMPLATES: "false"
@@ -28,7 +26,6 @@ services:
     volumes:
       - ../realms/base:/opt/keycloak/data/import
       - ./themes:/opt/keycloak/themes
-      - ./keycloak-bcrypt-1.6.0.jar:/opt/keycloak/providers/keycloak-bcrypt.jar
       - ./providers:/opt/keycloak/providers
 
     ports:

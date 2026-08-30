@@ -1,10 +1,10 @@
-FROM quay.io/keycloak/keycloak:24.0 AS builder
+FROM quay.io/keycloak/keycloak:26.7.2 AS builder
 
 ENV KC_DB=postgres
 
-RUN /opt/keycloak/bin/kc.sh build --features="update-email"
+RUN /opt/keycloak/bin/kc.sh build
 
-FROM quay.io/keycloak/keycloak:24.0
+FROM quay.io/keycloak/keycloak:26.7.2
 
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
