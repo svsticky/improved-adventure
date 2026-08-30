@@ -26,10 +26,6 @@ services:
     volumes:
       - ../realms/base:/opt/keycloak/data/import
       - ./themes:/opt/keycloak/themes
-      - ./providers:/opt/keycloak/providers
-
-    ports:
-      - "${KEYCLOAK_PORT:-8080}:8080"
 
 volumes:
   postgres_data:

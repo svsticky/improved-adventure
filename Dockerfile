@@ -2,6 +2,8 @@ FROM quay.io/keycloak/keycloak:26.7.2 AS builder
 
 ENV KC_DB=postgres
 
+COPY providers/ /opt/keycloak/providers/
+
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:26.7.2
