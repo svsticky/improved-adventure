@@ -1,6 +1,7 @@
 services:
   keycloak:
     build: .
+    restart: unless-stopped
     command: start --optimized
     network_mode: "host"
     environment:
