@@ -1,7 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
 html, body {
-    height: 100% !important;
+    min-height: 100% !important;
     margin: 0;
 }
 
@@ -9,11 +9,11 @@ body {
     background-color: #f3f4f6 !important;
     background-image: url('https://koala.svsticky.nl/assets/bg-pattern.svg') !important;
     background-size: cover;
-    
+
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .card-pf {
