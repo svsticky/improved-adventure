@@ -20,7 +20,7 @@
             <div class="content" style="padding: 20px;">
                 <table class="main" width="100%" cellpadding="0" cellspacing="0" style="border-radius: 3px; background-color: #fff; border: 1px solid #e9e9e9; border-collapse: separate;">
                     <tr>
-                        <td align="center" style="color: #fff; font-weight: 500; text-align: center; border-radius: 3px 3px 0 0; background-color: #fa6b20; padding: 20px;">
+                        <td align="center" style="color: #fff; font-weight: 500; text-align: center; border-radius: 3px 3px 0 0; background-color: #b21b21; padding: 20px;">
                             Studievereniging Sticky
                         </td>
                     </tr>
@@ -35,7 +35,7 @@
                                 <#if link??>
                                 <tr>
                                     <td align="center" style="padding: 10px 0 20px;">
-                                        <a href="${link}" style="color: #FFF; text-decoration: none; font-weight: bold; display: inline-block; border-radius: 5px; background-color: #fa6b20; border-style: solid; border-color: #fa6b20; border-width: 10px 25px;">
+                                        <a href="${link}" style="color: #FFF; text-decoration: none; font-weight: bold; display: inline-block; border-radius: 5px; background-color: #b21b21; border-style: solid; border-color: #b21b21; border-width: 10px 25px;">
                                             ${buttonText}
                                         </a>
                                     </td>
