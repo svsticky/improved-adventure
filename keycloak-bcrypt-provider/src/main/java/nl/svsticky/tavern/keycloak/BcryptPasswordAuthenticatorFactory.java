@@ -54,9 +54,9 @@ public class BcryptPasswordAuthenticatorFactory implements AuthenticatorFactory 
 
     @Override
     public String getHelpText() {
-        return "Verifies the password against the 'legacy_bcrypt_hash' user attribute (imported from Koala). "
-                + "On success: migrates the credential to PBKDF2 and removes the attribute. "
-                + "Falls back to standard Keycloak password check when no legacy hash is present.";
+        return "Uses the standard Keycloak password when the user has one. Otherwise verifies the password "
+                + "against the 'legacy_bcrypt_hash' user attribute (imported from Koala) and, on success, "
+                + "migrates the credential to PBKDF2 and removes the attribute.";
     }
 
     @Override
