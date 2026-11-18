@@ -11,6 +11,7 @@ import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
 import org.keycloak.models.UserCredentialModel;
 import org.keycloak.models.UserModel;
+import org.keycloak.models.credential.PasswordCredentialModel;
 import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.services.managers.AuthenticationManager;
 import org.mindrot.jbcrypt.BCrypt;
@@ -88,27 +89,12 @@ public class BcryptPasswordAuthenticator implements Authenticator {
 
         String bcryptHash = user.getFirstAttribute(LEGACY_BCRYPT_HASH_ATTRIBUTE);
 
-        if (bcryptHash != null) {
-            boolean hashMatches;
-            try {
-                hashMatches = BCrypt.checkpw(password, bcryptHash);
-            } catch (Exception e) {
-                // Malformed hash stored — treat as wrong password
-                hashMatches = false;
-            }
-
-            if (hashMatches) {
-                // Migrate to PBKDF2 and remove the legacy attribute
-                user.credentialManager().updateCredential(
-                        UserCredentialModel.password(password, false));
+        if (user.credentialManager().isConfiguredFor(PasswordCredentialModel.TYPE)) {
+            // A native password exists (set by a reset or an earlier migration), so it takes
+            // precedence and any leftover legacy hash is obsolete.
+            if (bcryptHash != null) {
                 user.removeAttribute(LEGACY_BCRYPT_HASH_ATTRIBUTE);
-                context.success();
-            } else {
-                context.getEvent().error(Errors.INVALID_USER_CREDENTIALS);
-                invalidPassword(context);
             }
-        } else {
-            // No legacy hash — standard PBKDF2 check
             boolean valid = user.credentialManager()
                     .isValid(UserCredentialModel.password(password));
             if (valid) {
@@ -117,6 +103,27 @@ public class BcryptPasswordAuthenticator implements Authenticator {
                 context.getEvent().error(Errors.INVALID_USER_CREDENTIALS);
                 invalidPassword(context);
             }
+            return;
+        }
+
+        boolean hashMatches = false;
+        if (bcryptHash != null) {
+            try {
+                hashMatches = BCrypt.checkpw(password, bcryptHash);
+            } catch (Exception e) {
+                // Malformed hash stored — treat as wrong password
+            }
+        }
+
+        if (hashMatches) {
+            // Migrate to PBKDF2 and remove the legacy attribute
+            user.credentialManager().updateCredential(
+                    UserCredentialModel.password(password, false));
+            user.removeAttribute(LEGACY_BCRYPT_HASH_ATTRIBUTE);
+            context.success();
+        } else {
+            context.getEvent().error(Errors.INVALID_USER_CREDENTIALS);
+            invalidPassword(context);
         }
     }
 
